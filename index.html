@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Bitcoin Faucet — rewardsfaucet.fun</title>
-  <meta name="description" content="Verified receipts go in. Bitcoin comes out. Watch Payoff find the faucet, then download Crinkl to start earning sats.">
+  <title>The Bitcoin Faucet — Earn Bitcoin by Scanning Receipts | rewardsfaucet.fun</title>
+  <meta name="description" content="Verified receipts go in. Bitcoin comes out. Watch Payoff find the faucet, then get the Crinkl app to earn Bitcoin (sats) by scanning everyday receipts. Identity stays off the table.">
+  <meta name="keywords" content="bitcoin faucet, earn bitcoin scanning receipts, receipt rewards app, earn sats from receipts, crinkl, scan receipts earn bitcoin">
   <meta name="theme-color" content="#1c130a">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="canonical" href="https://rewardsfaucet.fun">
@@ -29,17 +30,102 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "rewardsfaucet.fun",
-    "url": "https://rewardsfaucet.fun",
-    "description": "Verified receipts go in. Bitcoin comes out. The Bitcoin Faucet, powered by Crinkl.",
-    "about": {
-      "@type": "SoftwareApplication",
-      "name": "Crinkl",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "iOS, Android",
-      "url": "https://crinkl.xyz"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.crinkl.xyz/#organization",
+        "name": "Crinkl",
+        "url": "https://www.crinkl.xyz/",
+        "logo": "https://www.crinkl.xyz/crinkl-logo-dark.png",
+        "sameAs": [
+          "https://crinkl.xyz",
+          "https://app.crinkl.xyz",
+          "https://thepayoff.ai",
+          "https://rewardsfaucet.fun",
+          "https://x.com/crinklrewards",
+          "https://github.com/crinkl-protocol",
+          "https://www.moltbook.com/u/payoff"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://rewardsfaucet.fun/#website",
+        "name": "rewardsfaucet.fun",
+        "url": "https://rewardsfaucet.fun",
+        "description": "Verified receipts go in. Bitcoin comes out. The Bitcoin Faucet, powered by Crinkl.",
+        "inLanguage": "en-US",
+        "publisher": { "@id": "https://www.crinkl.xyz/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://rewardsfaucet.fun/#webpage",
+        "url": "https://rewardsfaucet.fun",
+        "name": "The Bitcoin Faucet — rewardsfaucet.fun",
+        "isPartOf": { "@id": "https://rewardsfaucet.fun/#website" },
+        "about": { "@id": "https://crinkl.xyz/#app" },
+        "primaryImageOfPage": "https://rewardsfaucet.fun/video-poster.jpg",
+        "breadcrumb": { "@id": "https://rewardsfaucet.fun/#breadcrumb" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://rewardsfaucet.fun/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "The Bitcoin Faucet", "item": "https://rewardsfaucet.fun" }
+        ]
+      },
+      {
+        "@type": "VideoObject",
+        "name": "Payoff Finds the Bitcoin Faucet",
+        "description": "Payoff, a tiny forensic commerce agent, crosses the desert chasing a receipt and finds the Bitcoin Faucet — a machine where verified receipts go in and Bitcoin comes out. The origin story of Crinkl.",
+        "thumbnailUrl": "https://rewardsfaucet.fun/video-poster.jpg",
+        "contentUrl": "https://rewardsfaucet.fun/payoff.mp4",
+        "uploadDate": "2026-06-13",
+        "duration": "PT1M2S",
+        "publisher": { "@id": "https://www.crinkl.xyz/#organization" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://crinkl.xyz/#app",
+        "name": "Crinkl",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "iOS, Android, Web",
+        "description": "Scan everyday receipts, earn Bitcoin (sats), and Boost the brands you already buy. Identity stays off the table.",
+        "url": "https://app.crinkl.xyz",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://www.crinkl.xyz/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://rewardsfaucet.fun/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is rewardsfaucet.fun?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It's the story of the Bitcoin Faucet — and the front door to Crinkl. Verified receipts go in, Bitcoin comes out. Watch Payoff find the faucet, then download the Crinkl app to start earning sats from your own receipts." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this real Bitcoin?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — rewards are paid in sats (Bitcoin's smallest unit). They're small and real. Verification and payout minimums apply, and payouts clear after a short hold. No guaranteed amounts — just proof in, sats out." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I have to share my identity?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Crinkl verifies that a purchase happened, not who you are. Once a receipt is verified it becomes an identity-free spend token — the signed proof carries no name, no profile, no tracking. Identity stays off the table." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is Payoff?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Payoff is a tiny forensic commerce agent who treats every receipt like sacred evidence. In the desert, he chases the receipt to the faucet. At his terminal — thepayoff.ai — he studies what verified commerce reveals." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the Crinkl app available yet?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The native iOS and Android apps are coming soon to the App Store and Google Play. You can use Crinkl on the web today at app.crinkl.xyz." }
+          }
+        ]
+      }
+    ]
   }
   </script>
 

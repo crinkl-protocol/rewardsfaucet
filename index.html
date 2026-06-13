@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Bitcoin Faucet — rewardsfaucet.com</title>
+  <meta name="description" content="Verified receipts go in. Bitcoin comes out. Watch Payoff find the faucet, then download Crinkl to start earning sats.">
+  <meta name="theme-color" content="#1c130a">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://rewardsfaucet.com">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rewardsfaucet.com">
+  <meta property="og:title" content="The Bitcoin Faucet — rewardsfaucet.com">
+  <meta property="og:description" content="Verified receipts go in. Bitcoin comes out. Watch Payoff find the faucet, then download Crinkl to start earning sats.">
+  <meta property="og:image" content="https://rewardsfaucet.com/video-poster.jpg">
+  <meta property="og:image:width" content="848">
+  <meta property="og:image:height" content="464">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Bitcoin Faucet — rewardsfaucet.com">
+  <meta name="twitter:description" content="Verified receipts go in. Bitcoin comes out.">
+  <meta name="twitter:image" content="https://rewardsfaucet.com/video-poster.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "rewardsfaucet.com",
+    "url": "https://rewardsfaucet.com",
+    "description": "Verified receipts go in. Bitcoin comes out. The Bitcoin Faucet, powered by Crinkl.",
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "Crinkl",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "iOS, Android",
+      "url": "https://crinkl.xyz"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --sand-deep: #1c130a;
+      --sand: #2a1d10;
+      --cream: #f5efe4;
+      --cream-dim: #d9cfbe;
+      --gold: #efc14e;
+      --gold-deep: #d8a838;
+      --ink: #1a1206;
+      --purple: #6b4ea8;
+      --display: 'Archivo', system-ui, sans-serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --maxw: 1280px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--sans);
+      background: var(--sand-deep);
+      color: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+
+    /* ---------- HEADER ---------- */
+    header {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 30;
+      padding: 22px 0;
+    }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(1.05rem, 2vw, 1.35rem); letter-spacing: -0.01em;
+      color: #fff; text-decoration: none; white-space: nowrap;
+    }
+    .brand .tld { color: var(--cream-dim); font-weight: 700; }
+    .nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); }
+    .nav a.link {
+      font-size: 0.95rem; font-weight: 500; color: var(--cream);
+      text-decoration: none; opacity: 0.92; transition: opacity .15s;
+    }
+    .nav a.link:hover { opacity: 1; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--ink);
+      font-weight: 700; font-size: 0.95rem;
+      padding: 11px 20px; border-radius: 10px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 6px 22px rgba(239,193,78,0.28);
+      transition: transform .12s, background .15s;
+      white-space: nowrap;
+    }
+    .btn-gold:hover { background: #f3cb66; transform: translateY(-1px); }
+    .nav-toggle { display: none; }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; align-items: center;
+      background-image: url('/faucet-hero.png');
+      background-size: cover;
+      background-position: 70% center;
+      background-repeat: no-repeat;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(20,13,6,0.92) 0%, rgba(20,13,6,0.78) 32%, rgba(20,13,6,0.30) 58%, rgba(20,13,6,0) 78%),
+        linear-gradient(0deg, rgba(20,13,6,0.55) 0%, rgba(20,13,6,0) 30%);
+    }
+    .hero .wrap { position: relative; z-index: 2; width: 100%; padding-top: 96px; padding-bottom: 56px; }
+    .hero-inner { max-width: 600px; }
+
+    h1.headline {
+      font-family: var(--display); font-weight: 900;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.96; letter-spacing: -0.02em;
+      color: var(--cream);
+      text-shadow: 0 2px 30px rgba(0,0,0,0.35);
+      margin-bottom: 22px;
+    }
+    .subhead {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+      color: var(--gold); letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+    .support {
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
+      color: var(--cream); max-width: 30ch;
+      margin-bottom: 30px; text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+    }
+
+    .btn-watch {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: var(--ink);
+      font-weight: 700; font-size: 1.05rem;
+      padding: 15px 28px; border-radius: 12px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 10px 30px rgba(239,193,78,0.3);
+      transition: transform .12s, background .15s;
+    }
+    .btn-watch:hover { background: #f3cb66; transform: translateY(-1px); }
+    .btn-watch svg { width: 16px; height: 16px; }
+
+    /* ---------- STEPS ---------- */
+    .steps {
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 14px; margin-top: 34px;
+    }
+    .step { display: inline-flex; align-items: center; gap: 10px; }
+    .step .num {
+      width: 26px; height: 26px; flex-shrink: 0;
+      border-radius: 50%; border: 1.5px solid rgba(245,239,228,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 700; color: var(--cream);
+    }
+    .step .lbl { font-size: 0.98rem; font-weight: 500; color: var(--cream); }
+    .step .dots { width: 46px; height: 1px; border-top: 2px dotted rgba(245,239,228,0.4); }
+    @media (max-width: 540px) { .step .dots { display: none; } }
+
+    /* ---------- VIDEO + BADGES ---------- */
+    .promo { margin-top: 38px; max-width: 440px; }
+    .videocard {
+      position: relative; width: 100%; border-radius: 14px; overflow: hidden;
+      cursor: pointer; aspect-ratio: 848 / 464;
+      background: #000 center/cover no-repeat;
+      border: 1px solid rgba(245,239,228,0.18);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+    }
+    .videocard img { width: 100%; height: 100%; object-fit: cover; }
+    .videocard::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(10,6,2,0.7) 0%, rgba(10,6,2,0) 45%);
+    }
+    .videocard .play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(255,255,255,0.92); z-index: 3;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4); transition: transform .15s, background .15s;
+    }
+    .videocard:hover .play { transform: translate(-50%,-50%) scale(1.07); background: #fff; }
+    .videocard .play svg { width: 22px; height: 22px; margin-left: 3px; fill: var(--ink); }
+    .videocard .vcap {
+      position: absolute; left: 16px; bottom: 13px; z-index: 3;
+      font-size: 0.9rem; font-weight: 600; color: #fff;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .videocard .vdur {
+      position: absolute; right: 14px; bottom: 13px; z-index: 3;
+      font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.85);
+      font-variant-numeric: tabular-nums;
+      background: rgba(0,0,0,0.4); padding: 2px 7px; border-radius: 5px;
+    }
+
+    .getapp-label {
+      font-family: var(--display); font-weight: 800;
+      font-size: 1.05rem; color: var(--gold);
+      margin: 24px 0 12px;
+    }
+    .badges { display: flex; gap: 12px; flex-wrap: wrap; }
+    .badge {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 11px;
+      background: #0c0905; border: 1px solid rgba(245,239,228,0.22);
+      border-radius: 11px; padding: 9px 16px;
+      color: var(--cream); opacity: 0.62; cursor: not-allowed;
+      filter: grayscale(0.35);
+    }
+    .badge svg { width: 26px; height: 26px; flex-shrink: 0; }
+    .badge .bt { display: flex; flex-direction: column; line-height: 1.15; }
+    .badge .bt small { font-size: 0.62rem; letter-spacing: 0.02em; opacity: 0.85; }
+    .badge .bt strong { font-size: 1.02rem; font-weight: 600; letter-spacing: -0.01em; }
+    .soon {
+      position: absolute; top: -9px; right: -7px;
+      background: var(--gold); color: var(--ink);
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.03em;
+      text-transform: uppercase; padding: 2px 7px; border-radius: 20px;
+      opacity: 1; filter: none;
+    }
+
+    /* ---------- CONTENT SECTIONS ---------- */
+    .section { padding: clamp(64px, 9vw, 110px) 0; }
+    #how { background: linear-gradient(180deg, #15100a 0%, #1c130a 100%); }
+    .eyebrow {
+      font-family: var(--display); font-weight: 800; font-size: 0.8rem;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section h2 {
+      font-family: var(--display); font-weight: 900;
+      font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1.05;
+      letter-spacing: -0.02em; color: var(--cream); margin-bottom: 18px;
+    }
+    .section .lede { font-size: 1.12rem; color: var(--cream-dim); max-width: 52ch; margin-bottom: 48px; }
+
+    .how-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+    }
+    .how-card {
+      background: rgba(245,239,228,0.04);
+      border: 1px solid rgba(245,239,228,0.1);
+      border-radius: 16px; padding: 30px 26px;
+    }
+    .how-card .n {
+      font-family: var(--display); font-weight: 900; font-size: 1.4rem;
+      color: var(--gold); width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(239,193,78,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .how-card h3 { font-family: var(--display); font-weight: 800; font-size: 1.25rem; color: var(--cream); margin-bottom: 8px; }
+    .how-card p { font-size: 1rem; color: var(--cream-dim); }
+
+    .pullquote {
+      margin-top: 52px; padding: 24px 0 24px 26px;
+      border-left: 3px solid var(--gold);
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(1.2rem, 2.6vw, 1.7rem); line-height: 1.3;
+      color: var(--cream); max-width: 24ch;
+    }
+    .pullquote span { color: var(--cream-dim); font-weight: 700; }
+
+    /* ---------- FAQ ---------- */
+    .faq-list { max-width: 760px; }
+    details.faq {
+      border-bottom: 1px solid rgba(245,239,228,0.12);
+      padding: 22px 0;
+    }
+    details.faq summary {
+      list-style: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+      font-family: var(--display); font-weight: 700; font-size: clamp(1.05rem,2vw,1.3rem);
+      color: var(--cream);
+    }
+    details.faq summary::-webkit-details-marker { display: none; }
+    details.faq summary .chev {
+      flex-shrink: 0; width: 22px; height: 22px; transition: transform .2s; opacity: 0.7;
+    }
+    details.faq[open] summary .chev { transform: rotate(45deg); }
+    details.faq p { margin-top: 14px; font-size: 1.04rem; color: var(--cream-dim); max-width: 64ch; }
+    details.faq a { color: var(--gold); text-decoration: none; }
+    details.faq a:hover { text-decoration: underline; }
+
+    /* ---------- FOOTER ---------- */
+    footer { border-top: 1px solid rgba(245,239,228,0.1); padding: 44px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { font-family: var(--display); font-weight: 800; font-size: 1.1rem; color: #fff; }
+    .footer-brand .tld { color: var(--cream-dim); }
+    .footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.92rem; color: var(--cream-dim); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-note { width: 100%; font-size: 0.8rem; color: rgba(217,207,190,0.55); margin-top: 8px; }
+
+    /* ---------- VIDEO MODAL ---------- */
+    .modal {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(6,4,2,0.92); backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .modal.open { display: flex; }
+    .modal video { width: min(960px, 100%); border-radius: 12px; box-shadow: 0 30px 90px rgba(0,0,0,0.6); }
+    .modal .close {
+      position: absolute; top: 20px; right: 24px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      color: #fff; font-size: 1.4rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal .close:hover { background: rgba(255,255,255,0.22); }
+
+    /* ---------- RESPONSIVE ---------- */
+    .faucet-mobile { display: none; }
+
+    @media (max-width: 860px) {
+      .how-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    @media (max-width: 760px) {
+      .nav .link { display: none; }
+      .nav-toggle {
+        display: inline-flex; background: none; border: none; cursor: pointer; padding: 6px;
+      }
+      .nav-toggle svg { width: 26px; height: 26px; stroke: var(--cream); }
+
+      .hero {
+        min-height: auto;
+        background-image: none;
+        display: block;
+        padding-top: 92px;
+      }
+      .hero::before { display: none; }
+      .hero .wrap { padding-top: 0; padding-bottom: 40px; }
+      .hero-inner { max-width: 100%; }
+      h1.headline { font-size: clamp(3rem, 16vw, 4.6rem); }
+      .support { max-width: 100%; }
+
+      .faucet-mobile {
+        display: block; width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover; object-position: 72% center;
+        border-radius: 16px; margin: 28px 0 4px;
+        border: 1px solid rgba(245,239,228,0.14);
+        box-shadow: 0 16px 44px rgba(0,0,0,0.4);
+      }
+      .promo { max-width: 100%; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 57px 0 0 0; z-index: 25;
+      background: rgba(15,10,5,0.97); backdrop-filter: blur(14px);
+      padding: 40px 28px; flex-direction: column; gap: 28px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--display); font-weight: 700; font-size: 1.4rem; color: var(--cream); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand">rewardsfaucet<span class="tld">.com</span></a>
+    <nav class="nav">
+      <a href="#how" class="link">How it works</a>
+      <a href="#faq" class="link">FAQ</a>
+      <a href="https://crinkl.xyz" class="btn-gold" target="_blank" rel="noopener">Get Crinkl App</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how" onclick="toggleMenu()">How it works</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="https://crinkl.xyz" target="_blank" rel="noopener">Get Crinkl App</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <h1 class="headline">The Bitcoin<br>Faucet</h1>
+      <p class="subhead">Verified receipts go in. Bitcoin comes out.</p>
+      <p class="support">Watch Payoff find the faucet, then download Crinkl to start earning sats.</p>
+
+      <button class="btn-watch" onclick="openVideo()">
+        Watch the journey
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+
+      <!-- faucet image surfaces here on mobile only -->
+      <img class="faucet-mobile" src="/faucet-hero.png" alt="A rusted metal Bitcoin faucet at a desert outpost — a verified receipt feeds into the RECEIPT IN slot marked with the purple Crinkl C, and a Bitcoin coin emerges from the spout.">
+
+      <div class="steps">
+        <div class="step"><span class="num">1</span><span class="lbl">Scan receipt</span></div>
+        <span class="dots"></span>
+        <div class="step"><span class="num">2</span><span class="lbl">Verify spend</span></div>
+        <span class="dots"></span>
+        <div class="step"><span class="num">3</span><span class="lbl">Earn sats</span></div>
+      </div>
+
+      <div class="promo">
+        <div class="videocard" onclick="openVideo()" role="button" tabindex="0" aria-label="Play the Payoff video">
+          <img src="/video-poster.jpg" alt="Payoff, a small foil-wrapped agent in a black hat, in the desert">
+          <span class="play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+          <span class="vcap">Watch Payoff find the faucet</span>
+          <span class="vdur">1:02</span>
+        </div>
+
+        <div class="getapp-label">Get Crinkl App</div>
+        <div class="badges">
+          <span class="badge" aria-disabled="true" title="Coming soon to the App Store">
+            <span class="soon">Coming soon</span>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 1.5c.1 1-.3 2-1 2.8-.7.8-1.8 1.4-2.8 1.3-.1-1 .4-2 1-2.7.7-.8 1.9-1.4 2.8-1.4zM19.6 17c-.5 1.2-.8 1.7-1.4 2.7-.9 1.4-2.2 3.1-3.8 3.1-1.4 0-1.8-.9-3.7-.9s-2.3.9-3.7.9c-1.6 0-2.8-1.5-3.7-2.9C.9 17.1.6 12.6 2.2 10.2c1-1.6 2.7-2.6 4.3-2.6 1.6 0 2.6 1 3.9 1 1.3 0 2.1-1 3.9-1 1.4 0 2.9.8 3.9 2.1-3.4 1.9-2.9 6.8 1.5 7.3z"/></svg>
+            <span class="bt"><small>Download on the</small><strong>App Store</strong></span>
+          </span>
+          <span class="badge" aria-disabled="true" title="Coming soon to Google Play">
+            <span class="soon">Coming soon</span>
+            <svg viewBox="0 0 24 24"><path fill="#34a853" d="M3.6 21.4l10.3-10.3-2.7-2.7z" opacity="0.9"/><path fill="#fbbc04" d="M17.8 9.3l-3.9-2.2-3 3 3 3z" opacity="0.9"/><path fill="#ea4335" d="M3.6 2.6l7.6 5.6 2.7-2.7z" opacity="0.9"/><path fill="#4285f4" d="M3.6 2.6C3.2 2.8 3 3.2 3 3.8v16.4c0 .6.2 1 .6 1.2l7.6-9.2z" opacity="0.95"/></svg>
+            <span class="bt"><small>Get it on</small><strong>Google Play</strong></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>A receipt is proof.<br>Proof pays.</h2>
+    <p class="lede">Payoff treats every receipt like evidence. Crinkl verifies that the purchase really happened — then turns it into sats. No tracking. No profiles. The receipt does the talking, not you.</p>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="n">1</div>
+        <h3>Scan receipt</h3>
+        <p>Snap a paper receipt, or let Crinkl read a DKIM-signed email receipt from your inbox. That's the proof of purchase.</p>
+      </div>
+      <div class="how-card">
+        <div class="n">2</div>
+        <h3>Verify spend</h3>
+        <p>Crinkl verifies the spend cryptographically and turns it into an identity-free spend token. A purchase happened — that's enough.</p>
+      </div>
+      <div class="how-card">
+        <div class="n">3</div>
+        <h3>Earn sats</h3>
+        <p>Verified spend earns you sats. Small, real, paid in Bitcoin. Feed the faucet, and the faucet stays on.</p>
+      </div>
+    </div>
+
+    <div class="pullquote">I follow the receipt,<br><span>not the person.</span></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>Questions from the desert</h2>
+
+    <div class="faq-list">
+      <details class="faq" open>
+        <summary>What is rewardsfaucet.com? <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>It's the story of the Bitcoin Faucet — and the front door to Crinkl. Verified receipts go in, Bitcoin comes out. Watch Payoff find the faucet, then download the Crinkl app to start earning sats from your own receipts.</p>
+      </details>
+
+      <details class="faq">
+        <summary>Is this real Bitcoin? <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>Yes — rewards are paid in sats (Bitcoin's smallest unit). They're small and real. Verification and payout minimums apply, and payouts clear after a short hold. No guaranteed amounts, no "number go up" — just proof in, sats out.</p>
+      </details>
+
+      <details class="faq">
+        <summary>Do I have to share my identity? <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>No. Crinkl verifies that a purchase happened, not who you are. Once a receipt is verified it becomes an identity-free spend token — the signed proof carries no name, no profile, no tracking. Identity stays off the table.</p>
+      </details>
+
+      <details class="faq">
+        <summary>Who is Payoff? <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>Payoff is a tiny forensic commerce agent who treats every receipt like sacred evidence. In the desert, he chases the receipt to the faucet. At his terminal — <a href="https://thepayoff.ai" target="_blank" rel="noopener">thepayoff.ai</a> — he studies what verified commerce reveals. Same character, two modes.</p>
+      </details>
+
+      <details class="faq">
+        <summary>Is the Crinkl app available yet? <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>The native iOS and Android apps are coming soon to the App Store and Google Play. You can use Crinkl on the web today at <a href="https://crinkl.xyz" target="_blank" rel="noopener">crinkl.xyz</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">rewardsfaucet<span class="tld">.com</span></div>
+      <div class="footer-links">
+        <a href="https://crinkl.xyz" target="_blank" rel="noopener">Crinkl</a>
+        <a href="https://thepayoff.ai" target="_blank" rel="noopener">Payoff Terminal</a>
+        <a href="https://www.moltbook.com/u/payoff" target="_blank" rel="noopener">Payoff on Moltbook</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-note">The faucet stays on. Powered by Crinkl — verified commerce, identity off the table.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ VIDEO MODAL ============ -->
+<div class="modal" id="videoModal" onclick="if(event.target===this)closeVideo()">
+  <button class="close" onclick="closeVideo()" aria-label="Close">&times;</button>
+  <video id="payoffVideo" controls playsinline preload="none" poster="/video-poster.jpg">
+    <source src="/payoff.mp4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function openVideo() {
+    var m = document.getElementById('videoModal');
+    var v = document.getElementById('payoffVideo');
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    v.currentTime = 0;
+    v.play().catch(function(){});
+  }
+  function closeVideo() {
+    var m = document.getElementById('videoModal');
+    var v = document.getElementById('payoffVideo');
+    v.pause();
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeVideo();
+  });
+</script>
+
+</body>
+</html>

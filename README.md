@@ -13,8 +13,6 @@ Static single-page site (no build step). Deploy to Vercel; point `rewardsfaucet.
 - `public/favicon.svg` — purple Crinkl "C"
 
 ## Canon (do not drift)
-- App language is **Crinkl**, never "Seeker".
-- Spelling is **Crinkl**, never "Crinkle".
 - App-store badges are **coming-soon** placeholders — no fake store URLs.
   Swap to real listings only when iOS/Android apps ship.
 - Voice: Payoff = a tiny forensic commerce agent. "I follow the receipt, not the person."

@@ -1,9 +1,9 @@
-# rewardsfaucet.com
+# rewardsfaucet.fun
 
 The Bitcoin Faucet — Payoff's origin/adventure landing page and the user-acquisition
 front door to Crinkl. **Verified receipts go in. Bitcoin comes out.**
 
-Static single-page site (no build step). Deploy to Vercel; point `rewardsfaucet.com` at it.
+Static single-page site (no build step). Deploy to Vercel; point `rewardsfaucet.fun` at it.
 
 ## Structure
 - `index.html` — entire page (HTML/CSS/JS inline)

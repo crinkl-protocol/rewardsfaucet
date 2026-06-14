@@ -225,6 +225,7 @@
       color: var(--gold); letter-spacing: -0.01em;
       margin-bottom: 18px;
     }
+    .subhead .nowrap { white-space: nowrap; }
     .support {
       font-size: clamp(1rem, 1.4vw, 1.12rem);
       color: var(--cream); max-width: 30ch;
@@ -490,7 +491,7 @@
   <div class="wrap">
     <div class="hero-inner">
       <h1 class="headline">The Bitcoin<br>Faucet</h1>
-      <p class="subhead">Verified receipts go in. Bitcoin comes out.</p>
+      <p class="subhead">Verified receipts go in.<br><span class="nowrap">Bitcoin comes out.</span></p>
       <p class="support">Watch Payoff find the faucet, then download Crinkl to start earning sats.</p>
 
       <button class="btn-watch" onclick="openVideo()">
@@ -542,7 +543,7 @@
       <div class="how-card">
         <div class="n">1</div>
         <h3>Scan receipt</h3>
-        <p>Snap a paper receipt, or let Crinkl read a DKIM-signed email receipt from your inbox. That's the proof of purchase.</p>
+        <p>Snap a paper receipt. That's the proof of purchase.</p>
       </div>
       <div class="how-card">
         <div class="n">2</div>

@@ -415,39 +415,41 @@
     .modal .close:hover { background: rgba(255,255,255,0.22); }
 
     /* ---------- RESPONSIVE ---------- */
-    .faucet-mobile { display: none; }
-
     @media (max-width: 860px) {
       .how-grid { grid-template-columns: 1fr; gap: 16px; }
     }
 
     @media (max-width: 920px) {
       .nav .link { display: none; }
+      .nav .btn-gold { display: none; }   /* CTA lives in the hamburger menu on mobile */
       .nav-toggle {
         display: inline-flex; background: none; border: none; cursor: pointer; padding: 6px;
       }
       .nav-toggle svg { width: 26px; height: 26px; stroke: var(--cream); }
 
+      /* Mobile keeps the desktop treatment: text sits OVER the faucet image */
       .hero {
-        min-height: auto;
-        background-image: none;
-        display: block;
+        min-height: 100svh;
+        background-image: url('/faucet-hero-mobile.png');
+        background-size: cover;
+        background-position: center top;
+        display: flex; align-items: flex-start;
         padding-top: 92px;
       }
-      .hero::before { display: none; }
+      .hero::before {
+        display: block;
+        background: linear-gradient(180deg,
+          rgba(20,13,6,0.93) 0%,
+          rgba(20,13,6,0.72) 26%,
+          rgba(20,13,6,0.40) 50%,
+          rgba(20,13,6,0.62) 78%,
+          rgba(20,13,6,0.88) 100%);
+      }
       .hero .wrap { padding-top: 0; padding-bottom: 40px; }
       .hero-inner { max-width: 100%; }
       h1.headline { font-size: clamp(3rem, 16vw, 4.6rem); }
       .support { max-width: 100%; }
 
-      .faucet-mobile {
-        display: block; width: 100%;
-        aspect-ratio: 941 / 1672;
-        object-fit: cover; object-position: center;
-        border-radius: 16px; margin: 28px 0 4px;
-        border: 1px solid rgba(245,239,228,0.14);
-        box-shadow: 0 16px 44px rgba(0,0,0,0.4);
-      }
       .promo { max-width: 100%; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
@@ -495,9 +497,6 @@
         Watch the journey
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
       </button>
-
-      <!-- faucet image surfaces here on mobile only -->
-      <img class="faucet-mobile" src="/faucet-hero-mobile.png" alt="A rusted metal Bitcoin faucet at a desert outpost — a verified receipt feeds into the RECEIPT IN slot marked with the purple Crinkl C, and a Bitcoin coin emerges from the spout.">
 
       <div class="steps">
         <div class="step"><span class="num">1</span><span class="lbl">Scan receipt</span></div>

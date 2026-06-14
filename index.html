@@ -391,6 +391,10 @@
     .footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
     .footer-links a { font-size: 0.92rem; color: var(--cream-dim); text-decoration: none; transition: color .15s; }
     .footer-links a:hover { color: var(--gold); }
+    .footer-social { display: flex; gap: 14px; align-items: center; }
+    .footer-social a { color: var(--cream-dim); display: inline-flex; transition: color .15s; }
+    .footer-social a:hover { color: var(--gold); }
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; }
     .footer-note { width: 100%; font-size: 0.8rem; color: rgba(217,207,190,0.55); margin-top: 8px; }
 
     /* ---------- VIDEO MODAL ---------- */
@@ -603,6 +607,11 @@
         <a href="#how">How it works</a>
         <a href="#faq">FAQ</a>
       </div>
+      <div class="footer-social">
+        <a href="https://x.com/crinklrewards" target="_blank" rel="noopener" aria-label="Follow Crinkl on X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
       <div class="footer-note">The faucet stays on. Powered by Crinkl — verified commerce, identity off the table.</div>
     </div>
   </div>
@@ -616,7 +625,18 @@
   </video>
 </div>
 
+<!-- Vercel Web Analytics (enable "Web Analytics" in the Vercel project for /_vercel/insights to serve) -->
 <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<script>
+  // Provider-agnostic event wrapper — swap the body to change analytics tools.
+  function track(name, props) {
+    try { window.va && window.va('event', Object.assign({ name: name }, props || {})); } catch (e) {}
+  }
+
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
@@ -626,6 +646,7 @@
     m.classList.add('open');
     document.body.style.overflow = 'hidden';
     v.currentTime = 0;
+    track('video_open');
     v.play().catch(function(){});
   }
   function closeVideo() {
@@ -637,6 +658,33 @@
   }
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeVideo();
+  });
+
+  // --- Video engagement: started / 25 / 50 / 75 / completed ---
+  (function () {
+    var v = document.getElementById('payoffVideo');
+    if (!v) return;
+    var fired = {};
+    function once(key, name, props) { if (!fired[key]) { fired[key] = true; track(name, props); } }
+    v.addEventListener('play', function () { once('start', 'video_started'); });
+    v.addEventListener('timeupdate', function () {
+      if (!v.duration) return;
+      var pct = v.currentTime / v.duration;
+      if (pct >= 0.25) once('p25', 'video_progress', { pct: 25 });
+      if (pct >= 0.50) once('p50', 'video_progress', { pct: 50 });
+      if (pct >= 0.75) once('p75', 'video_progress', { pct: 75 });
+    });
+    v.addEventListener('ended', function () { track('video_completed'); });
+  })();
+
+  // --- Get-app clicks: every link to app.crinkl.xyz, tagged by where it lives ---
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="app.crinkl.xyz"]');
+    if (!a) return;
+    var loc = a.closest('nav') ? 'nav'
+            : a.closest('#mobileMenu') ? 'mobile_menu'
+            : a.closest('#faq') ? 'faq' : 'other';
+    track('get_app_click', { location: loc });
   });
 </script>
 
